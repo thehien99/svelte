@@ -2,7 +2,6 @@ import { error } from "@sveltejs/kit"
 import appAxios from "../../../URL/Api"
 export async function load({ params }) {
   const id = params.id
-  console.log("id", id)
   const res = await appAxios({
     method: 'get',
     url: `/limit`,

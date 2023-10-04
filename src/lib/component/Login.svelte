@@ -6,11 +6,9 @@
     FormGroup,
     TextInput,
     PasswordInput,
-    Button,
   } from "carbon-components-svelte";
   import {validatePhoneNumber} from "../function/validateForm.js";
   import appAxios from "../../URL/Api.js";
-  import {onMount} from "svelte";
 
   let phone = "";
   let password = "";
@@ -66,10 +64,8 @@
         {/if}
       {/await}
       <div>
-        <Button type="submit">Login</Button>
+        <button type="submit">Login</button>
       </div>
-    </div>
-    <div class="question-login">
     </div>
   </Form>
 </div>
@@ -80,10 +76,6 @@
     height: 100%;
     border: 2px solid #000;
     padding: 50px;
-  }
-  .form-login .question-login {
-    font-style: italic;
-    cursor: pointer;
   }
   .err {
     font-size: 15px;

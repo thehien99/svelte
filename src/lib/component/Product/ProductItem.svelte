@@ -1,5 +1,6 @@
 <script>
   import StarRating from "@ernane/svelte-star-rating";
+  import {compile} from "svelte/compiler";
   export let title;
   export let price;
   export let area;
@@ -32,7 +33,7 @@
 
 <div class="product_item row p-4">
   <div class="product_sub col-5">
-    <a href="/">
+    <a href={`/product/${id}`}>
       {#each img as item}
         <img src={item[0]} alt="" />
       {/each}</a
@@ -82,6 +83,8 @@
   .product_item {
     width: 100%;
     height: 100%;
+    border-bottom: 2px solid red;
+    margin: auto;
   }
   .product_sub img {
     width: 100%;

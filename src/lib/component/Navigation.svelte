@@ -1,8 +1,6 @@
 <script>
-  import {goto} from "$app/Navigation";
   import {onMount} from "svelte";
   import appAxios from "../../URL/Api";
-  import {page} from "$app/stores";
   let cate = [];
   onMount(async () => {
     const res = await appAxios.get("/getall");
@@ -15,9 +13,11 @@
     <a class="p-3" href="/">Trang Chủ</a>
   </div>
   <div class="navigation-menu">
-    {#each cate as item (item.id)}
-      <a href={`${item.code}`} class="p-3"> {item.value}</a>
-    {/each}
+    {#if cate.length > 0}
+      {#each cate as item (item.id)}
+        <a class="p-3" href={`/rental/${item.code}`}>{item.value}</a>
+      {/each}
+    {/if}
   </div>
 </div>
 

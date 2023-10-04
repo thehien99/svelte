@@ -1,12 +1,10 @@
 <script>
-  import {page} from "$app/stores";
+  import RentalItem from "../../../lib/component/Rental/RentalItem.svelte";
   import appAxios from "../../../URL/Api";
-  import ProductItem from "./ProductItem.svelte";
-
-  export let product;
-  export let totalPost;
-  let dataPost = product;
-  let totalPage = totalPost;
+  import {page} from "$app/stores";
+  export let data;
+  $: product = data.products.rows;
+  let totalPage = data?.products?.count;
   let pages = [];
   let limit = 5;
   $: currentPage = 1;
@@ -20,8 +18,12 @@
   }
   pages = createArray(totalPage);
   const changePage = async (key, value) => {
+    const paramsCate = $page.params.id;
     const searchParams = new URLSearchParams($page.url.searchParams);
     searchParams.append(key, value);
+    //setCurrentPage
+    // console.log("set", setcurrentPage)
+    //append params
     let params = [];
     for (let entry of searchParams.entries()) {
       params.push(entry);
@@ -33,33 +35,33 @@
     });
     const data = await appAxios({
       method: "get",
-      url: `/limit`,
+      url: `/limit?categoryCode=${paramsCate}`,
       params: searchObj,
     });
-    dataPost = data.data.response.rows;
-    currentPage = value;
+    product = data.data.response.rows;
+    let setcurrentPage = searchParams.get("page");
+    if (setcurrentPage !== currentPage) {
+      currentPage = setcurrentPage;
+    }
   };
 </script>
 
-<div class="product_list">
-  <h1 class="mt-3 text-center font-bold fs-3 uppercase">danh sách tin đăng</h1>
-  <div class="mt-5 w-full ">
-    {#each dataPost as item (item.id)}
-      <ProductItem
-        image={JSON.parse(item.images.image)}
-        title={item.title}
-        price={item.attributes.price}
-        area={item.attributes.acreage}
-        address={item.address}
-        description={JSON.parse(item.description)}
-        name={item.sellers.name}
-        zalo={item.sellers.zalo}
-        phone={item.sellers.phone}
-        star={item.star}
-        id={item?.id}
-      />
-    {/each}
-  </div>
+<div class="container-sm rental mt-3">
+  {#each product as item}
+    <RentalItem
+      image={JSON.parse(item.images.image)}
+      title={item.title}
+      price={item.attributes.price}
+      area={item.attributes.acreage}
+      address={item.address}
+      description={JSON.parse(item.description)}
+      name={item.sellers.name}
+      zalo={item.sellers.zalo}
+      phone={item.sellers.phone}
+      star={item.star}
+      id={item?.id}
+    />
+  {/each}
   <div class="btn-pagination">
     {#each pages as item}
       <button
@@ -71,8 +73,9 @@
 </div>
 
 <style>
-  .product_list {
-    margin-top: 40px;
+  .rental {
+    border: 1px solid #000;
+    border-radius: 10px;
   }
   .btn-pagination {
     display: flex;
