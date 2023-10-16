@@ -1,5 +1,5 @@
 <script>
-  import {goto} from "$app/Navigation";
+  import {goto} from "$app/navigation";
   import {user} from "../../store/auth";
   import CurrentUser from "./CurrentUser.svelte";
   $: isLogin = $user;

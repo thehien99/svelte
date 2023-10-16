@@ -1,5 +1,5 @@
 <script>
-  import {goto} from "$app/Navigation";
+  import {goto} from "$app/navigation";
   import {nameUser, user} from "./../../../store/auth.js";
   import {page} from "$app/stores";
   import Icon from "@iconify/svelte";
