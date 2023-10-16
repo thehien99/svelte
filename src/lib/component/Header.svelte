@@ -5,14 +5,16 @@
   $: isLogin = $user;
   let valid = false;
   const handleLogin = () => {
-    goto("/auth/login", {replaceState: true});
+    goto("/login", {replaceState: true});
   };
   const handleLogOut = () => {
     $user = null;
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    goto("/", {replaceState: true});
   };
   const handleSignUp = () => {
-    goto("/auth/signup", {replaceState: true});
+    goto("/signup", {replaceState: true});
   };
   const handleStatus = () => {
     valid = !valid;
@@ -50,41 +52,154 @@
 </div>
 
 <style>
-  .header-wrapper {
-    margin-top: 10px;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: #000;
-    text-align: center;
-    position: relative;
+  @media (max-width: 424px) {
+    .header-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    button {
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 7px;
+      margin-top: 5px;
+    }
+    .manager {
+      display: none;
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      align-items: center;
+      z-index: 1;
+      background-color: rgb(241 245 249);
+      border-radius: 10px;
+      padding: 7px;
+      color: blue;
+      width: 100%;
+    }
   }
-  .header-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (min-width: 425px) and (max-width: 768px) {
+    .header-wrapper {
+      margin-top: 10px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: #000;
+      text-align: center;
+      position: relative;
+    }
+    .header-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 7px;
+    }
+    .manager {
+      display: none;
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      z-index: 1;
+      background-color: rgb(241 245 249);
+      border-radius: 10px;
+      padding: 7px;
+      color: blue;
+    }
   }
-  button {
-    margin-left: 15px;
-    text-decoration: none;
-    color: #fff;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 7px;
+  @media (min-width: 768px) and (max-width: 992px) {
   }
-  .manager {
-    display: none;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .header-wrapper {
+      margin-top: 10px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: #000;
+      text-align: center;
+      position: relative;
+    }
+    .header-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 7px;
+    }
+    .manager {
+      display: none;
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      z-index: 1;
+      background-color: rgb(241 245 249);
+      border-radius: 10px;
+      padding: 7px;
+      color: blue;
+    }
   }
-  .active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    z-index: 1;
-    background-color: rgb(241 245 249);
-    border-radius: 10px;
-    padding: 7px;
-    color: blue;
+  @media (min-width: 1201px) {
+    .header-wrapper {
+      margin-top: 10px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: #000;
+      text-align: center;
+      position: relative;
+    }
+    .header-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 7px;
+    }
+    .manager {
+      display: none;
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      z-index: 1;
+      background-color: rgb(241 245 249);
+      border-radius: 10px;
+      padding: 7px;
+      color: blue;
+    }
   }
 </style>

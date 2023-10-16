@@ -35,15 +35,6 @@
           }
         })
         .catch((error) => console.log(error));
-      // function success(address) {
-      //   const lat = address.coords.latitude;
-      //   const long = address.coords.longitude;
-      //   leaflet
-      //     .marker([lat, long])
-      //     .addTo(map)
-      //     .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-      //     .openPopup();
-      // }
     }
   });
 

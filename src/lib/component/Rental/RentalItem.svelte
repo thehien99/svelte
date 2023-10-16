@@ -1,8 +1,5 @@
 <script>
   import StarRating from "@ernane/svelte-star-rating";
-  import {onMount} from "svelte";
-  import appAxios from "../../../URL/Api";
-  import {page} from "$app/stores";
   export let title;
   export let price;
   export let area;
@@ -42,7 +39,7 @@
         {/each}</a
       >
     </div>
-    <div class="col-7">
+    <div class="col-7 pro">
       <a href={`/product/${id}`} class="rental_title">
         <span class="stars">
           <StarRating {config} />
@@ -80,50 +77,244 @@
 </div>
 
 <style>
-  .stars {
-    display: flex;
-    justify-content: start;
+  @media (max-width: 424px) {
+    .stars {
+      display: flex;
+    }
+    .rental_item .rental_sub {
+      width: 100%;
+    }
+    .rental_item .pro {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .rental_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .rental_info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .rental_user {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .rental_user span {
+      width: 100%;
+      text-align: center;
+    }
+    .user_phone {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+    .user_phone a {
+      margin-right: 0px !important;
+    }
   }
-  .rental_item {
-    width: 100%;
-    height: 100%;
+  @media (min-width: 425px) and (max-width: 768px) {
+    .stars {
+      display: flex;
+      justify-content: start;
+    }
+    .rental_item {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .rental_sub {
+      width: 100%;
+    }
+    .rental_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .pro {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .rental_user {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .rental_user span {
+      width: 100%;
+    }
+    .rental_user .user_phone {
+      display: flex;
+      margin-bottom: 10px;
+      flex-direction: column;
+      width: 100%;
+    }
+    .user_phone a {
+      margin-right: 0px !important;
+    }
   }
-  .rental_sub img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+  @media (min-width: 768px) and (max-width: 992px) {
+    .stars {
+      display: flex;
+      justify-content: start;
+    }
+    .rental_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .rental_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .rental_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .rental_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .rental_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .rental_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rental_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
-  .rental_title {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .stars {
+      display: flex;
+      justify-content: start;
+    }
+    .rental_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .rental_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .rental_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .rental_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .rental_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .rental_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rental_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
-  .rental_info {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .rental_info .price {
-    width: 50%;
-  }
-  .area {
-    width: 28%;
-  }
-  .rental_user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .rental_infomation {
-    color: #8a8d91;
-    line-height: 1.5rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-  .user_phone a {
-    text-decoration: none;
+  @media (min-width: 1201px) {
+    .stars {
+      display: flex;
+      justify-content: start;
+    }
+    .rental_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .rental_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .rental_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .rental_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .rental_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .rental_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rental_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
 </style>

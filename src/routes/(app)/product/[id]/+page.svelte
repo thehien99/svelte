@@ -1,14 +1,16 @@
 <script>
   import Icon from "@iconify/svelte";
-  import avatar from "../../../untils/img/user.jpg";
-  import SilderSlick from "../../../lib/component/SilderSlick.svelte";
-  import Map from "../../../lib/component/Map.svelte";
+  import avatar from "../../../../untils/img/user.jpg";
+  import SilderSlick from "$lib/component/SilderSlick.svelte";
+  import Map from "$lib/component/Map.svelte";
   export let data;
   let product = data.products[0];
 </script>
 
-<div class="container-xxl h-full flex gap-4 mt-7">
-  <div class="w-3/5 bg-[#fff] border rounded-md border-[#dedede]">
+<div class="container-xxl h-full flex gap-4 mt-7 product">
+  <div
+    class="w-3/5 bg-[#fff] border rounded-md border-[#dedede] product_information"
+  >
     <SilderSlick img={JSON?.parse(product?.images?.image)} />
     <div>
       <header class="ps-4">
@@ -24,8 +26,7 @@
             {product?.address}
           </span>
         </p>
-        <address class="flex items-center font-medium mt-3" />
-        <div class="flex">
+        <div class="flex mt-4 product_sub">
           <div
             class="flex items-center text-2xl font-bold text-green-500 text-center"
           >
@@ -131,7 +132,7 @@
       </section>
     </div>
   </div>
-  <div class="w-1/4">
+  <div class="w-1/4 product_user">
     <div
       class="p-3 w-full h-[20rem] bg-[#febb02] flex flex-col items-center border rounded-md"
     >
@@ -169,3 +170,50 @@
     </div>
   </div>
 </div>
+
+<style>
+  @media (max-width: 424px) {
+    .product {
+      display: flex;
+      flex-direction: column;
+    }
+    .product_information {
+      width: 100%;
+    }
+    .product_sub {
+      display: flex;
+      flex-direction: column;
+    }
+    .product_sub > div {
+      margin-top: 10px;
+      margin-left: 0px;
+    }
+    .product_user {
+      width: 100%;
+    }
+  }
+  @media (min-width: 425px) and (max-width: 768px) {
+    .product {
+      display: flex;
+      flex-direction: column;
+    }
+    .product_information {
+      width: 100%;
+    }
+    .product_sub {
+      display: flex;
+      flex-direction: column;
+    }
+    .product_sub > div {
+      margin-top: 10px;
+      margin-left: 0px;
+    }
+    .product_user {
+      width: 100%;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+  }
+</style>

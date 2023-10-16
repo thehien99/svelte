@@ -1,14 +1,14 @@
-import appAxios from "../URL/Api";
 import { error } from "@sveltejs/kit"
-
-export async function load({ query }) {
+import appAxios from "../../../../URL/Api"
+export async function load({ params }) {
+  const id = params.id
   const res = await appAxios({
     method: 'get',
     url: `/limit`,
-    params: query
+    params: { id }
   })
-  if (res.data.err === 1) {
-    const products = res?.data?.response
+  if (res?.data?.err === 1) {
+    const products = res?.data?.response?.rows
     if (products) {
       return { products }
     }
@@ -17,3 +17,4 @@ export async function load({ query }) {
     throw error(res?.data?.msg)
   }
 }
+

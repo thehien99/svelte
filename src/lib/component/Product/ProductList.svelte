@@ -43,7 +43,7 @@
 
 <div class="product_list">
   <h1 class="mt-3 text-center font-bold fs-3 uppercase">danh sách tin đăng</h1>
-  <div class="mt-5 w-full ">
+  <div class="mt-5 w-full">
     {#each dataPost as item (item.id)}
       <ProductItem
         image={JSON.parse(item.images.image)}
@@ -71,13 +71,35 @@
 </div>
 
 <style>
-  .product_list {
-    margin-top: 40px;
+  @media (max-width: 424px) {
   }
-  .btn-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  @media (min-width: 425px) and (max-width: 768px) {
+    .product_list {
+      margin-top: 40px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .product_list {
+      margin-top: 40px;
+    }
+    .btn-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  @media (min-width: 1201px) {
+    .product_list {
+      margin-top: 40px;
+    }
+    .btn-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 <script>
-  import RentalItem from "../../../lib/component/Rental/RentalItem.svelte";
-  import appAxios from "../../../URL/Api";
+  import RentalItem from "$lib/component/Rental/RentalItem.svelte";
+  import appAxios from "../../../../URL/Api";
   import {page} from "$app/stores";
   export let data;
   $: product = data.products.rows;
@@ -21,9 +21,7 @@
     const paramsCate = $page.params.id;
     const searchParams = new URLSearchParams($page.url.searchParams);
     searchParams.append(key, value);
-    //setCurrentPage
-    // console.log("set", setcurrentPage)
-    //append params
+
     let params = [];
     for (let entry of searchParams.entries()) {
       params.push(entry);

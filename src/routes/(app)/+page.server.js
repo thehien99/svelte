@@ -1,14 +1,13 @@
+import appAxios from "../../URL/Api";
 import { error } from "@sveltejs/kit"
-import appAxios from "../../../URL/Api"
 
-export async function load({ params }) {
-  const id = params.id
+export async function load({ query }) {
   const res = await appAxios({
     method: 'get',
-    url: `/limit?categoryCode=${id} `
+    url: `/limit`,
+    params: query
   })
-  console.log(res)
-  if (res?.data?.err === 1) {
+  if (res.data.err === 1) {
     const products = res?.data?.response
     if (products) {
       return { products }
@@ -18,4 +17,3 @@ export async function load({ params }) {
     throw error(res?.data?.msg)
   }
 }
-

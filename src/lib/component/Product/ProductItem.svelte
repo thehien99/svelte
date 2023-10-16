@@ -1,6 +1,5 @@
 <script>
   import StarRating from "@ernane/svelte-star-rating";
-  import {compile} from "svelte/compiler";
   export let title;
   export let price;
   export let area;
@@ -39,7 +38,7 @@
       {/each}</a
     >
   </div>
-  <div class="col-7">
+  <div class="col-7 pro">
     <a href={`/product/${id}`} class="product_title">
       <span class="star">
         <StarRating {config} />
@@ -51,7 +50,7 @@
       <span class="area">Diện tích: {area}</span>
       <span class="address mt-2">{address}</span>
     </div>
-    <div class="mt-3">
+    <div class="product_description mt-3">
       <span class="product_infomation">
         {description}
       </span>
@@ -76,52 +75,246 @@
 </div>
 
 <style>
-  .star {
-    display: flex;
-    justify-content: start;
+  @media (max-width: 424px) {
+    .star {
+      display: flex;
+    }
+    .product_item .product_sub {
+      width: 100%;
+    }
+    .product_item .pro {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .product_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .product_info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .product_user {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .product_user span {
+      width: 100%;
+      text-align: center;
+    }
+    .user_phone {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+    .user_phone a {
+      margin-right: 0px !important;
+    }
   }
-  .product_item {
-    width: 100%;
-    height: 100%;
-    border-bottom: 2px solid red;
-    margin: auto;
+  @media (min-width: 425px) and (max-width: 768px) {
+    .product_item {
+      flex-direction: column;
+    }
+    .product_item .product_sub {
+      width: 100%;
+    }
+    .pro {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .product_info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product_info span {
+      margin-top: 10px;
+    }
+    .product_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .product_user {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .product_user span {
+      width: 100%;
+    }
+    .product_user .user_phone {
+      display: flex;
+      margin-bottom: 10px;
+      flex-direction: column;
+      width: 100%;
+    }
+    .user_phone a {
+      margin-right: 0px !important;
+    }
   }
-  .product_sub img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+  @media (min-width: 768px) and (max-width: 992px) {
+    .star {
+      display: flex;
+      justify-content: start;
+    }
+    .product_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .product_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .product_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .product_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .product_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
-  .product_title {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .star {
+      display: flex;
+      justify-content: start;
+    }
+    .product_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .product_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .product_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .product_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .product_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
-  .product_info {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .product_info .price {
-    width: 50%;
-  }
-  .area {
-    width: 28%;
-  }
-  .product_user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .product_infomation {
-    color: #8a8d91;
-    line-height: 1.5rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-  .user_phone a {
-    text-decoration: none;
+  @media (min-width: 1201px) {
+    .star {
+      display: flex;
+      justify-content: start;
+    }
+    .product_item {
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid red;
+      margin: auto;
+    }
+    .product_sub img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product_title {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .product_info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .product_info .price {
+      width: 50%;
+    }
+    .area {
+      width: 28%;
+    }
+    .product_user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product_infomation {
+      color: #8a8d91;
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .user_phone a {
+      text-decoration: none;
+    }
   }
 </style>
