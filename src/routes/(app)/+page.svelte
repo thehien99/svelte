@@ -1,5 +1,5 @@
 <script>
-  import ProductList from "$lib/component/Product/productList.svelte";
+  import ProductList from "./../../lib/component/Product/ProductList.svelte";
   export let data;
   $: dataPost = data?.products?.rows;
   $: count = data?.products?.count;
