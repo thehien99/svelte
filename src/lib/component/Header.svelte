@@ -5,7 +5,7 @@
   $: isLogin = $user;
   let valid = false;
   const handleLogin = () => {
-    goto("/login", {replaceState: true});
+    goto("/guest/login", {replaceState: true});
   };
   const handleLogOut = () => {
     $user = null;
@@ -14,7 +14,7 @@
     goto("/", {replaceState: true});
   };
   const handleSignUp = () => {
-    goto("/signup", {replaceState: true});
+    goto("/guest/signup", {replaceState: true});
   };
   const handleStatus = () => {
     valid = !valid;
@@ -41,7 +41,7 @@
         <button on:click={handleStatus} class="bg-primary"
           >Quản Lý Tài Khoản
           <div class={`${valid ? "active" : "manager"}`}>
-            <a href="/dashboard">Thông Tin Tài Khoản</a>
+            <a href="/admin/dashboard">Thông Tin Tài Khoản</a>
             <a href="/">Đăng Tin Cho Thuê</a>
           </div>
         </button>

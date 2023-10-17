@@ -1,9 +1,9 @@
 <script>
-  import {nameUser} from "./../../../../store/auth.js";
-  import avatar from "../../../../untils/img/user.jpg";
+  import avatar from "../../../../../untils/img/user.jpg";
   import {onMount} from "svelte";
-  import appAxios from "../../../../URL/Api";
   import Swal from "sweetalert2";
+  import appAxios from "../../../../../URL/Api.js";
+  import {nameUser} from "../../../../../store/auth";
   let inforUser = {};
   $: payload = {
     name: inforUser?.name || "",

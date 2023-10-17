@@ -1,7 +1,7 @@
 <script>
   import {onMount} from "svelte";
-  import appAxios from "../../../URL/Api";
   import Swal from "sweetalert2";
+  import appAxios from "../../../../URL/Api";
   let data = [];
   onMount(async () => {
     const admin = await appAxios({

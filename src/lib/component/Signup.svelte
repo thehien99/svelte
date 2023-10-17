@@ -71,7 +71,7 @@
       <p class="text-danger">Số điện thoại không đúng!</p>
     {/if}
     <p class="text-danger">{err}</p>
-    <Button type="submit">SignUp</Button>
+    <Button class="bg-primary" type="submit">SignUp</Button>
   </Form>
 </div>
 

@@ -1,28 +1,28 @@
 <script>
   import {goto} from "$app/navigation";
-  import {nameUser, user} from "./../../../store/auth.js";
   import {page} from "$app/stores";
   import Icon from "@iconify/svelte";
+  import {nameUser, user} from "../../../../store/auth";
   $: pathname = $page.url.pathname;
   $: name = $nameUser;
   const sidebar = [
     {
       id: 1,
-      path: "/dashboard",
+      path: "/admin/dashboard",
       name: "Quản lý tin đăng",
       icon: "material-symbols:bookmark-manager",
       color: "red",
     },
     {
       id: 2,
-      path: "/dashboard/upPost",
+      path: "/admin/dashboard/upPost",
       name: "Đăng tin cho thuê",
       icon: "solar:pen-bold",
       color: "blue",
     },
     {
       id: 3,
-      path: "/dashboard/updateManage",
+      path: "/admin/dashboard/updateManage",
       name: "Sửa thông tin cá nhân",
       icon: "ic:round-manage-accounts",
       color: "pink",

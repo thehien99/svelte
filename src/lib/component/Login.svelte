@@ -1,5 +1,5 @@
 <script>
-  import { user} from "./../../store/auth.js";
+  import {user} from "./../../store/auth.js";
   import {goto} from "$app/navigation";
   import {
     Form,
@@ -64,7 +64,7 @@
         {/if}
       {/await}
       <div>
-        <button type="submit">Login</button>
+        <button class="bg-primary p-3 text-white" type="submit">Login</button>
       </div>
     </div>
   </Form>
