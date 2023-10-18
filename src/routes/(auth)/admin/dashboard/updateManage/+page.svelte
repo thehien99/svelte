@@ -1,14 +1,16 @@
 <script>
   import avatar from "../../../../../untils/img/user.jpg";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
   import Swal from "sweetalert2";
   import appAxios from "../../../../../URL/Api.js";
-  import {nameUser} from "../../../../../store/auth";
-  let inforUser = {};
+  import { nameUser } from "../../../../../store/auth";
+  import { validatePhoneNumber } from "../../../../../lib/function/validateForm";
   $: payload = {
     name: inforUser?.name || "",
     phone: inforUser?.phone || "",
   };
+  $: invalidPhone = validatePhoneNumber(payload?.phone);
+  let inforUser = {};
   onMount(async () => {
     const res = await appAxios.get("/getuser");
     inforUser = res.response;
@@ -55,11 +57,14 @@
     <label for="" class="italic font-semibold">Số Điện Thoại</label>
     <input
       name="phone"
-      type="text"
+      type="number"
       class="w-full bg-red border-2 border-solid p-2"
       on:change={setPhone}
       value={payload?.phone}
     />
+    {#if !invalidPhone}
+      <p class="text-danger">pls inputs number phone</p>
+    {/if}
   </div>
   <div class="w-full mt-3">
     <a href="/" class="text-blue-700">Đổi Mật Khẩu*</a>

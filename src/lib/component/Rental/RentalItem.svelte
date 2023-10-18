@@ -175,7 +175,6 @@
     .rental_item {
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid red;
       margin: auto;
     }
     .rental_sub img {
@@ -225,7 +224,6 @@
     .rental_item {
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid red;
       margin: auto;
     }
     .rental_sub img {
@@ -275,7 +273,6 @@
     .rental_item {
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid red;
       margin: auto;
     }
     .rental_sub img {

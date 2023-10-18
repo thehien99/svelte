@@ -71,10 +71,7 @@
 </div>
 
 <style>
-  .rental {
-    border: 1px solid #000;
-    border-radius: 10px;
-  }
+
   .btn-pagination {
     display: flex;
     justify-content: center;

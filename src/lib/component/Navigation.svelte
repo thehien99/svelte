@@ -12,7 +12,6 @@
   const handleOpenMenu = () => {
     isOpenMenu = !isOpenMenu;
   };
-  console.log(browser && screen.width);
 </script>
 
 <button class="icon_menu" on:click={handleOpenMenu}>
