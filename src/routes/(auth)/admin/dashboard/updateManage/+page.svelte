@@ -117,7 +117,7 @@
   @media (min-width: 1201px) {
     .edit_account {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 60%;
       width: 50%;
       transform: translate(-50%, -50%);

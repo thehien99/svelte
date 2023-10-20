@@ -1,8 +1,8 @@
 <script>
-  import {goto} from "$app/navigation";
-  import {page} from "$app/stores";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import Icon from "@iconify/svelte";
-  import {nameUser, user} from "../../../../store/auth";
+  import { nameUser, user } from "../../../../store/auth";
   $: pathname = $page.url.pathname;
   $: name = $nameUser;
   const sidebar = [
@@ -38,7 +38,7 @@
     $user = null;
     localStorage.removeItem("token");
     localStorage.removeItem("name");
-    goto("/", {replaceState: true});
+    goto("/", { replaceState: true });
   };
   const isACtiveStyle =
     "hover:bg-gray-200 flex rounded-md items-center gap-2 py-2 mt-2 font-bold bg-gray-200 no-underline text-black ";
@@ -50,7 +50,7 @@
   };
 </script>
 
-<div class="dashboard">
+<div class="dashboard animate__animated animate__bounceInDown">
   <div class="w-[240px] bg-[#F1F2F7] sidebar" class:open={isOpenMenu}>
     <div class="h-[64px] logo">logo</div>
     <div class="menu_dashboard">

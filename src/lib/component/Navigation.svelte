@@ -1,7 +1,7 @@
 <script>
-  import {browser} from "$app/environment";
+  import { browser } from "$app/environment";
   import Icon from "@iconify/svelte";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
   import appAxios from "../../URL/Api";
   let cate = [];
   let isOpenMenu = false;
@@ -14,10 +14,16 @@
   };
 </script>
 
-<button class="icon_menu" on:click={handleOpenMenu}>
+<button
+  class="icon_menu animate__animated animate__bounceInRight"
+  on:click={handleOpenMenu}
+>
   <Icon icon="solar:hamburger-menu-bold" width="40px" />
 </button>
-<div class="navigation" class:open={isOpenMenu}>
+<div
+  class="navigation animate__animated animate__bounceInRight"
+  class:open={isOpenMenu}
+>
   <div class="navigation-home">
     <a class="p-3" href="/">Trang Chủ</a>
   </div>

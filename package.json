@@ -31,6 +31,7 @@
 		"@ernane/svelte-star-rating": "^1.1.4",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"@tabler/icons-svelte": "^2.32.0",
+		"animate.css": "^4.1.1",
 		"axios": "^1.4.0",
 		"leaflet-geosearch": "^3.9.0",
 		"maplibre-gl": "^3.3.1",

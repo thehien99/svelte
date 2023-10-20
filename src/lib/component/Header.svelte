@@ -1,20 +1,21 @@
 <script>
-  import {goto} from "$app/navigation";
-  import {user} from "../../store/auth";
+  import { goto } from "$app/navigation";
+  import { user } from "../../store/auth";
+  import logo from "../../untils/img/logo.jpg";
   import CurrentUser from "./CurrentUser.svelte";
   $: isLogin = $user;
   let valid = false;
   const handleLogin = () => {
-    goto("/guest/login", {replaceState: true});
+    goto("/guest/login", { replaceState: true });
   };
   const handleLogOut = () => {
     $user = null;
     localStorage.removeItem("token");
     localStorage.removeItem("name");
-    goto("/", {replaceState: true});
+    goto("/", { replaceState: true });
   };
   const handleSignUp = () => {
-    goto("/guest/signup", {replaceState: true});
+    goto("/guest/signup", { replaceState: true });
   };
   const handleStatus = () => {
     valid = !valid;
@@ -24,7 +25,7 @@
 <div class="header">
   {#if !isLogin}
     <div class="container header-wrapper">
-      <div>logo</div>
+      <img src={logo} alt="hinh" class="logo" />
       <div />
       <div class="header-menu">
         <button class="bg-primary" on:click={handleLogin}>Đăng Nhập</button>
@@ -33,14 +34,14 @@
     </div>
   {:else if isLogin}
     <div class="container header-wrapper">
-      <div>logo</div>
+      <img src={logo} alt="hinh" class="logo" />
       <div class="header-menu">
         <div>
           <CurrentUser />
         </div>
         <button on:click={handleStatus} class="bg-primary"
           >Quản Lý Tài Khoản
-          <div class={`${valid ? "active" : "manager"}`}>
+          <div class={`${valid ? "active" : "manager"} `}>
             <a href="/admin/dashboard">Thông Tin Tài Khoản</a>
             <a href="/">Đăng Tin Cho Thuê</a>
           </div>
@@ -75,7 +76,7 @@
       position: absolute;
       right: 0;
       align-items: center;
-      z-index: 1;
+      z-index: 100;
       background-color: rgb(241 245 249);
       border-radius: 10px;
       padding: 7px;
@@ -195,11 +196,14 @@
       flex-direction: column;
       position: absolute;
       top: 50px;
-      z-index: 1;
+      z-index: 100;
       background-color: rgb(241 245 249);
       border-radius: 10px;
       padding: 7px;
       color: blue;
+    }
+    .logo {
+      width: 4%;
     }
   }
 </style>

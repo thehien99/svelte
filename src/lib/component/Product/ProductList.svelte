@@ -1,15 +1,16 @@
 <script>
-  import {page} from "$app/stores";
+  import { page } from "$app/stores";
   import appAxios from "../../../URL/Api";
   import ProductItem from "./ProductItem.svelte";
 
   export let product;
   export let totalPost;
+  $: currentPage = 1;
   let dataPost = product;
   let totalPage = totalPost;
   let pages = [];
   let limit = 5;
-  $: currentPage = 1;
+  let scroll;
   function createArray(value) {
     const totalPages = Math.ceil(value / limit);
     let arr = [];
@@ -20,6 +21,9 @@
   }
   pages = createArray(totalPage);
   const changePage = async (key, value) => {
+    scroll.scrollIntoView({
+      behavior: "smooth",
+    });
     const searchParams = new URLSearchParams($page.url.searchParams);
     searchParams.append(key, value);
     let params = [];
@@ -28,7 +32,7 @@
     }
     let searchObj = {};
     params.forEach((i) => {
-      searchObj = {...searchObj, [i[0]]: [i[1]]};
+      searchObj = { ...searchObj, [i[0]]: [i[1]] };
       return searchObj;
     });
     const data = await appAxios({
@@ -41,7 +45,7 @@
   };
 </script>
 
-<div class="product_list">
+<div class="product_list" bind:this={scroll}>
   <h1 class="mt-3 text-center font-bold fs-3 uppercase">danh sách tin đăng</h1>
   <div class="mt-5 w-full">
     {#each dataPost as item (item.id)}

@@ -4,7 +4,7 @@
   import Navigation from "$lib/component/Navigation.svelte";
 </script>
 
-<div>
+<div class="animate__fadeInUpBig animate__animated">
   <Header />
   <Navigation />
   <slot />

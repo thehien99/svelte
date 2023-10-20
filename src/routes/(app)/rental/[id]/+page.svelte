@@ -1,13 +1,14 @@
 <script>
   import RentalItem from "$lib/component/Rental/RentalItem.svelte";
   import appAxios from "../../../../URL/Api";
-  import {page} from "$app/stores";
+  import { page } from "$app/stores";
   export let data;
   $: product = data.products.rows;
+  $: currentPage = 1;
   let totalPage = data?.products?.count;
   let pages = [];
   let limit = 5;
-  $: currentPage = 1;
+  let scroll;
   function createArray(value) {
     const totalPages = Math.ceil(value / limit);
     let arr = [];
@@ -18,6 +19,9 @@
   }
   pages = createArray(totalPage);
   const changePage = async (key, value) => {
+    scroll.scrollIntoView({
+      behavior: "smooth",
+    });
     const paramsCate = $page.params.id;
     const searchParams = new URLSearchParams($page.url.searchParams);
     searchParams.append(key, value);
@@ -28,7 +32,7 @@
     }
     let searchObj = {};
     params.forEach((i) => {
-      searchObj = {...searchObj, [i[0]]: [i[1]]};
+      searchObj = { ...searchObj, [i[0]]: [i[1]] };
       return searchObj;
     });
     const data = await appAxios({
@@ -44,7 +48,11 @@
   };
 </script>
 
-<div class="container-sm rental mt-3">
+
+<div
+  class="container-sm rental mt-3 animate__animated animate__fadeInUp"
+  bind:this={scroll}
+>
   {#each product as item}
     <RentalItem
       image={JSON.parse(item.images.image)}
@@ -71,7 +79,6 @@
 </div>
 
 <style>
-
   .btn-pagination {
     display: flex;
     justify-content: center;
